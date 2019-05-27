@@ -11,3 +11,9 @@ This application using RabbitMQ Delayed Message Exchange Plugin to set delay for
 You can get detailed information about this plugin on this link:
 
 https://www.rabbitmq.com/blog/2015/04/16/scheduling-messages-with-rabbitmq/
+
+This application using Swagger for API documentation.
+
+After you run crud-proxy service on your localhost, you can see the API docs on this link:
+
+http://localhost:9101/reckyphiter/crud/swagger-ui.html
