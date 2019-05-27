@@ -7,5 +7,7 @@ This application consists of three modules:
 3. crud-worker is service that consumes data from message queue and stores data to database.
 
 This application using RabbitMQ Delayed Message Exchange Plugin to set delay for messages scheduling.
+
 You can get detailed information about this plugin on this link:
+
 https://www.rabbitmq.com/blog/2015/04/16/scheduling-messages-with-rabbitmq/
