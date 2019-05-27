@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 minutes">
+    <contextName>wallet-queue-proxy</contextName>
+
+    <property name="LOGDIR" value="../../logs" />
+    <property name="LOG_FILE" value="${LOGDIR}/crud-worker" />
+	
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{YYYY-MM-dd HH:mm:ss} %level [%thread] %logger{36} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <logger name="ovo.wallet.queue.proxy" level="info" additivity="false">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

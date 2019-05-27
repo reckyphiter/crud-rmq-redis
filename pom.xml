@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <name>crud-rmq-redis-${project.version}</name>
+    <groupId>com.reckyphiter</groupId>
+    <artifactId>crud-rmq-redis</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    
+    <modules>
+        <module>crud-common</module>
+        <module>crud-proxy</module>
+        <module>crud-worker</module>
+    </modules>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring.boot.version>2.1.4.RELEASE</spring.boot.version>
+        <hibernate.validator.version>6.0.16.Final</hibernate.validator.version>
+        <postgresql.version>42.2.5</postgresql.version>
+        <hikaricp.version>3.3.1</hikaricp.version>
+        <jedis.version>2.10.2</jedis.version>
+        <javax.inject.version>1</javax.inject.version>
+        <javax.validation.version>2.0.1.Final</javax.validation.version>
+        <javax.el-api.version>3.0.0</javax.el-api.version>
+        <javax.el.version>3.0.0</javax.el.version>
+        <jsr305.version>3.0.2</jsr305.version>
+        <commons.lang3.version>3.9</commons.lang3.version>
+        <commons.collections4.version>4.3</commons.collections4.version>
+        <lombok.version>1.18.6.0</lombok.version>
+        <jackson.version>2.9.9</jackson.version>
+        <orika.version>1.5.4</orika.version>
+        <logback.version>1.2.3</logback.version>
+        <slf4j.version>1.7.26</slf4j.version>
+        <springfox.swagger.version>2.9.2</springfox.swagger.version>
+    </properties>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>test</scope>
+            </dependency>
+        
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- jpa, crud repository -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- hibernate -->
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator-annotation-processor</artifactId>
+                <version>${hibernate.validator.version}</version>
+            </dependency>
+
+            <!-- PostgreSQL -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+
+            <!-- HikariCP -->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${hikaricp.version}</version>
+            </dependency>
+                
+            <!-- rabbitmq -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>2.9.0</version>
+            </dependency>
+
+            <!-- javax.inject -->
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+
+            <!-- javax validation -->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${javax.validation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>${javax.el-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${javax.el.version}</version>
+            </dependency>
+
+            <!-- jsr305 -->
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
+            </dependency>
+
+            <!-- commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+
+            <!-- commons-collections4 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons.collections4.version}</version>
+            </dependency>
+
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- orika mapper -->
+            <dependency>
+                <groupId>ma.glasnost.orika</groupId>
+                <artifactId>orika-core</artifactId>
+                <version>${orika.version}</version>
+            </dependency>
+
+            <!-- logging -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+                
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <!-- springfox swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
